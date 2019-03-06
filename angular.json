@@ -2,6 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "defaultProject": "playground",
   "projects": {
     "playground": {
       "root": "",
@@ -364,9 +365,98 @@
           }
         }
       }
+    },
+    "all": {
+      "root": "src/framework",
+      "sourceRoot": "src/framework",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "ng-package.json"
+          }
+        }
+      }
+    },
+    "auth": {
+      "root": "src/framework/auth",
+      "sourceRoot": "src/framework/auth",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "src/framework/auth/ng-package.json"
+          }
+        }
+      }
+    },
+    "date-fns": {
+      "root": "src/framework/date-fns",
+      "sourceRoot": "src/framework/date-fns",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "src/framework/date-fns/ng-package.json"
+          }
+        }
+      }
+    },
+    "moment": {
+      "root": "src/framework/moment",
+      "sourceRoot": "src/framework/moment",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "src/framework/moment/ng-package.json"
+          }
+        }
+      }
+    },
+    "security": {
+      "root": "src/framework/security",
+      "sourceRoot": "src/framework/security",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "src/framework/security/ng-package.json"
+          }
+        }
+      }
+    },
+    "theme": {
+      "root": "src/framework/theme",
+      "sourceRoot": "src/framework/theme",
+      "projectType": "library",
+      "prefix": "nb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "tsconfig.publish.json",
+            "project": "src/framework/theme/ng-package.json"
+          }
+        }
+      }
     }
   },
-  "defaultProject": "playground",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

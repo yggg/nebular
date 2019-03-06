@@ -11,14 +11,14 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "outDir": "./src/.lib",
-    "rootDir": "./.ng_build",
+    "rootDir": "./src/framework",
     "sourceMap": true,
     "target": "es5",
     "inlineSources": true,
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
-      "@nebular/theme": ["./.ng_build/theme"]
+      "@nebular/theme": ["./src/framework/theme"]
     },
     "skipLibCheck": true,
     "typeRoots": [
@@ -26,17 +26,18 @@
     ]
   },
   "include": [
-    "./.ng_build/**/*"
+    "./src/framework/**/*"
   ],
   "exclude": [
-    "./.ng_build/**/*.e2e.ts",
-    "./.ng_build/**/*.spec.ts",
-    "./.ng_build/**/schematics/*"
+    "./src/framework/**/*.e2e.ts",
+    "./src/framework/**/*.spec.ts",
+    "./src/framework/**/schematics/*"
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "genDir": "./.ng_compiled"
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true
   }
 }

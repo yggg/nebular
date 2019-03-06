@@ -8,7 +8,7 @@ const replace = require('gulp-replace');
 task('copy-sources', () => {
   src('./src/framework/**/*')
     .pipe(dest(BUILD_DIR))
-    .on('end', replaceScssWithCss);
+    // .on('end', replaceScssWithCss);
 });
 
 task('copy-schematics', () => {

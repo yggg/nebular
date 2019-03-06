@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "src/.lib/date-fns",
+  "lib": {
+    "entryFile": "src/framework/public_api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "@angular/animations",
+    "@angular/animations",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/core",
+    "@angular/forms",
+    "@angular/http",
+    "@angular/platform-browser",
+    "@angular/platform-browser-dynamic",
+    "@angular/router",
+    "bootstrap",
+    "colors.js",
+    "core-js",
+    "date-fns",
+    "docsearch.js",
+    "gulp-bump",
+    "highlight.js",
+    "intersection-observer",
+    "ionicons",
+    "jasmine-fail-fast",
+    "leaflet",
+    "marked",
+    "moment",
+    "nebular-icons",
+    "normalize.css",
+    "rxjs",
+    "socicon",
+    "zone.js"
+  ]
+}
