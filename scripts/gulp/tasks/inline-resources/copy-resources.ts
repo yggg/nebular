@@ -40,7 +40,7 @@ export function copyResources(globs) {
     }
 
     const files = glob.sync(pattern, {})
-      .filter(name => /\.js$/.test(name)); // Matches only JavaScript files.
+      .filter(name => /\.ts$/.test(name)); // Matches only JavaScript files.
 
     // Generate all files content with inlined templates.
     return Promise.all(files.map(filePath => {
