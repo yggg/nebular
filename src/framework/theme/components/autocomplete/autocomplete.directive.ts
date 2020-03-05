@@ -100,8 +100,6 @@ export class NbAutocompleteDirective<T> implements OnDestroy, AfterViewInit, Con
 
   protected overlayRef: NbOverlayRef;
 
-  protected overlayOffset = 8;
-
   protected keyManager: NbActiveDescendantKeyManager<NbOptionComponent<T>>;
 
   protected destroy$: Subject<void> = new Subject<void>();
@@ -134,6 +132,12 @@ export class NbAutocompleteDirective<T> implements OnDestroy, AfterViewInit, Con
   set autocomplete(autocomplete: NbAutocompleteComponent<T>) {
     this._autocomplete = autocomplete;
   }
+
+  /**
+   * Options list pane offset from the input element.
+   **/
+  @Input()
+  protected overlayOffset = 8;
 
   @HostBinding('class.nb-autocomplete-position-top')
   get top(): boolean {

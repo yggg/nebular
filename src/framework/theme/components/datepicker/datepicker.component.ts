@@ -485,6 +485,12 @@ export class NbBasePickerComponent<D, T, P> extends NbBasePicker<D, T, P> {
   }
   protected _showWeekNumber: boolean = false;
 
+  /**
+   * Picker pane offset from the input element.
+   **/
+  @Input()
+  protected overlayOffset = 8;
+
   constructor(@Inject(NB_DOCUMENT) document,
               positionBuilder: NbPositionBuilderService,
               triggerStrategyBuilder: NbTriggerStrategyBuilderService,

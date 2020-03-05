@@ -628,6 +628,12 @@ export class NbSelectComponent<T> implements OnChanges, AfterViewInit, AfterCont
   protected _multiple: boolean = false;
 
   /**
+   * Options list pane offset from the select element.
+   **/
+  @Input()
+  protected optionsOverlayOffset = 8;
+
+  /**
    * Will be emitted when selected value changes.
    * */
   @Output() selectedChange: EventEmitter<T | T[]> = new EventEmitter();
@@ -672,7 +678,6 @@ export class NbSelectComponent<T> implements OnChanges, AfterViewInit, AfterCont
   overlayPosition: NbPosition = '' as NbPosition;
 
   protected ref: NbOverlayRef;
-  protected optionsOverlayOffset = 8;
 
   protected triggerStrategy: NbTriggerStrategy;
 
