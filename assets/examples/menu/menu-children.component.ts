@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'nb-menu-children',
@@ -7,32 +8,27 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class MenuChildrenComponent {
 
-  items = [
+  items: NbMenuItem[] = [
     {
       title: 'Profile',
       expanded: true,
       children: [
         {
           title: 'Change Password',
-          link: [], // goes into angular `routerLink`
         },
         {
           title: 'Privacy Policy',
-          ulr: '#', // goes directly into `href` attribute
         },
         {
           title: 'Logout',
-          link: [],
         },
       ],
     },
     {
       title: 'Shopping Bag',
-      link: [],
     },
     {
       title: 'Orders',
-      link: [],
     },
   ];
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'nb-menu-autocollapse',
@@ -8,22 +9,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 export class MenuAutoCollapseComponent {
 
-  items = [
+  items: NbMenuItem[] = [
     {
       title: 'Profile',
       expanded: true,
       children: [
         {
           title: 'Change Password',
-          link: [], // goes into angular `routerLink`
         },
         {
           title: 'Privacy Policy',
-          url: '#', // goes directly into `href` attribute
         },
         {
           title: 'Logout',
-          link: [],
         },
       ],
     },
@@ -32,15 +30,12 @@ export class MenuAutoCollapseComponent {
       children: [
         {
           title: 'First Product',
-          link: [], // goes into angular `routerLink`
         },
         {
           title: 'Second Product',
-          url: '#', // goes directly into `href` attribute
         },
         {
           title: 'Third Product',
-          link: [],
         },
       ],
     },
@@ -49,15 +44,12 @@ export class MenuAutoCollapseComponent {
       children: [
         {
           title: 'First Order',
-          link: [], // goes into angular `routerLink`
         },
         {
           title: 'Second Order',
-          url: '#', // goes directly into `href` attribute
         },
         {
           title: 'Third Order',
-          link: [],
         },
       ],
     },

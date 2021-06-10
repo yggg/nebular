@@ -6,7 +6,7 @@ import {
   NB_AUTH_OPTIONS,
   nbAuthCreateToken,
   NbAuthJWTToken,
-  NbAuthToken,
+  NbAuthOAuth2Token,
 } from '@nebular/auth';
 import { getDeepFromObject } from '../../../framework/auth/helpers';
 
@@ -17,7 +17,7 @@ import { getDeepFromObject } from '../../../framework/auth/helpers';
 })
 export class OAuth2PasswordLoginComponent {
 
-  token: NbAuthToken;
+  token: NbAuthOAuth2Token;
   redirectDelay: number = 0;
   showMessages: any = {};
   strategy: string = '';
@@ -48,7 +48,7 @@ export class OAuth2PasswordLoginComponent {
 
     this.authService.authenticate(this.strategy, this.user).subscribe((result: NbAuthResult) => {
       this.submitted = false;
-      this.token = result.getToken();
+      this.token = result.getToken() as NbAuthOAuth2Token;
       if (result.isSuccess()) {
         this.messages = result.getMessages();
       } else {

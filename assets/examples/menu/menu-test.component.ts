@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { takeWhile } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { NbMenuService, NbMenuItem } from '@nebular/theme';
 
 @Component({
@@ -10,7 +11,7 @@ import { NbMenuService, NbMenuItem } from '@nebular/theme';
         <nb-menu id="menu-sidebar" tag="sidebarMenu" [items]="sidebarMenuItems"></nb-menu>
       </nb-sidebar>
       <nb-layout-column>
-        <nb-card size="xxlarge">
+        <nb-card size="giant">
           <nb-card-body>
             <nb-menu id="menu-first" tag="firstMenu" [items]="firstMenuItems" [autoCollapse]="true"></nb-menu>
             <router-outlet></router-outlet>
@@ -18,7 +19,7 @@ import { NbMenuService, NbMenuItem } from '@nebular/theme';
             <button nbButton id="homeBtn" (click)="navigateHome()">Home</button>
           </nb-card-body>
         </nb-card>
-        <nb-card size="xxlarge">
+        <nb-card size="giant">
           <nb-card-body>
             <nb-menu id="menu-second" tag="SecondMenu" [items]="secondMenuItems"></nb-menu>
             <router-outlet></router-outlet>
@@ -26,7 +27,7 @@ import { NbMenuService, NbMenuItem } from '@nebular/theme';
             <button nbButton id="homeBtn" (click)="navigateHome()">Home</button>
           </nb-card-body>
         </nb-card>
-        <nb-card size="xxlarge">
+        <nb-card size="giant">
           <nb-card-body>
             <nb-menu id="menu-third" tag="thirdMenu" [items]="thirdMenuItems"></nb-menu>
           </nb-card-body>
@@ -36,7 +37,7 @@ import { NbMenuService, NbMenuItem } from '@nebular/theme';
   `,
 })
 export class MenuTestComponent implements OnInit, OnDestroy {
-  sidebarMenuItems = [
+  sidebarMenuItems: NbMenuItem[] = [
     {
       title: 'Menu Items',
       group: true,
@@ -90,7 +91,7 @@ export class MenuTestComponent implements OnInit, OnDestroy {
       ],
     },
   ];
-  firstMenuItems = [
+  firstMenuItems: NbMenuItem[] = [
     {
       title: 'Menu Items',
       group: true,
@@ -109,7 +110,7 @@ export class MenuTestComponent implements OnInit, OnDestroy {
       icon: 'home-outline',
     },
   ];
-  secondMenuItems = [
+  secondMenuItems: NbMenuItem[] = [
     {
       title: 'Menu items with fragments ',
       group: true,
@@ -118,7 +119,7 @@ export class MenuTestComponent implements OnInit, OnDestroy {
       title: 'Menu #1',
       link: '/menu/menu-test.component/1',
       icon: 'home-outline',
-      pathMatch: 'partial',
+      pathMatch: 'prefix',
     },
     {
       title: 'Menu #12 + fragment',
@@ -154,19 +155,19 @@ export class MenuTestComponent implements OnInit, OnDestroy {
     },
   ];
 
-  private alive: boolean = true;
+  private destroy$ = new Subject<void>();
 
   constructor(private menuService: NbMenuService) { }
 
   ngOnInit() {
     this.menuService
       .onItemClick()
-      .pipe(takeWhile(() => this.alive))
+      .pipe(takeUntil(this.destroy$))
       .subscribe((data: { tag: string; item: NbMenuItem }) => console.info(data));
 
     this.menuService
       .onItemSelect()
-      .pipe(takeWhile(() => this.alive))
+      .pipe(takeUntil(this.destroy$))
       .subscribe((data: { tag: string; item: NbMenuItem }) => console.info(data));
 
     // this.itemHoverSubscription = this.menuService.onItemHover()
@@ -174,7 +175,7 @@ export class MenuTestComponent implements OnInit, OnDestroy {
 
     this.menuService
       .onSubmenuToggle()
-      .pipe(takeWhile(() => this.alive))
+      .pipe(takeUntil(this.destroy$))
       .subscribe((data: { tag: string; item: NbMenuItem }) => console.info(data));
 
     this.menuService.addItems(
@@ -220,7 +221,8 @@ export class MenuTestComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.alive = false;
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   addMenuItem() {

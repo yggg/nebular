@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'nb-menu-showcase',
@@ -7,26 +8,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class MenuShowcaseComponent {
 
-  items = [
+  items: NbMenuItem[] = [
     {
       title: 'Profile',
       icon: 'person-outline',
-      link: [],
     },
     {
       title: 'Change Password',
       icon: 'lock-outline',
-      link: [],
     },
     {
       title: 'Privacy Policy',
       icon: { icon: 'checkmark-outline', pack: 'eva' },
-      link: [],
     },
     {
       title: 'Logout',
       icon: 'unlock-outline',
-      link: [],
     },
   ];
 }
