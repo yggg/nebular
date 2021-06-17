@@ -1,7 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbButtonModule, NbCardModule, NbRadioModule, NbSelectModule } from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbFormFieldModule,
+  NbIconModule,
+  NbRadioModule,
+  NbSelectModule,
+} from '@nebular/theme';
 import { SelectRoutingModule } from './select-routing.module';
 import { SelectCleanComponent } from './select-clean.component';
 import { SelectDisabledComponent } from './select-disabled.component';
@@ -19,6 +26,8 @@ import { SelectStatusComponent } from './select-status.component';
 import { SelectInteractiveComponent } from './select-interactive.component';
 import { SelectTestComponent } from './select-test.component';
 import { SelectCompareWithComponent } from './select-compare-with.component';
+import { SelectIconComponent } from './select-icon.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +47,7 @@ import { SelectCompareWithComponent } from './select-compare-with.component';
     SelectInteractiveComponent,
     SelectTestComponent,
     SelectCompareWithComponent,
+    SelectIconComponent,
   ],
   imports: [
     FormsModule,
@@ -48,6 +58,8 @@ import { SelectCompareWithComponent } from './select-compare-with.component';
     CommonModule,
     NbRadioModule,
     NbButtonModule,
+    NbIconModule,
+    NbFormFieldModule,
   ],
 })
-export class SelectModule {}
+export class SelectModule { }
